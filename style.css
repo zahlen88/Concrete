@@ -265,31 +265,24 @@ nav a.active {
   padding: 2.2rem 2rem;
 }
 
-.services-list,
-.testimonials-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.1rem;
-  margin-top: 1.3rem;
-  background: none;
-  box-shadow: none;
-  border: none;
-  padding: 0;
+..testimonials-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping like services list */
+    gap: 2.1rem; /* Add spacing between testimonial cards */
+    transition: transform 0.5s ease;
 }
 
-.service-card,
 .testimonial-card {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border);
-  padding: 1.3rem 1.1rem 1.1rem 1.1rem;
-  min-width: 230px;
-  flex: 1 1 310px;
-  max-width: 350px;
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow 0.16s, border 0.16s, transform 0.14s;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    padding: 1.3rem 1.1rem 1.1rem 1.1rem;
+    flex: 1 1 310px; /* Match services card flex properties */
+    max-width: 350px; /* Ensure it doesn't exceed services card width */
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.16s, border 0.16s, transform 0.14s;
 }
 .service-card:hover,
 .testimonial-card:hover {
