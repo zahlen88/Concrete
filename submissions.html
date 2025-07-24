@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin – Heartland Concrete Pros</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Topbar (copy from your other pages for consistency) -->
+    
+    <header>
+        <h2>Heartland Concrete Pros</h2>
+    </header>
+    <nav>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <div class="hamburger-bars">
+            <div class="hamburger-bar bar1"></div>
+            <div class="hamburger-bar bar2"></div>
+            <div class="hamburger-bar bar3"></div>
+          </div>
+        </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="submissions.html">Admin</a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </nav>
+
+    <div class="login-container" id="login">
+        <h2>Admin Login</h2>
+        <input type="text" id="username" placeholder="Username" autocomplete="username"/>
+        <input type="password" id="password" placeholder="Password" autocomplete="current-password"/>
+        <button onclick="login()">Login</button>
+        <p class="error" id="loginError"></p>
+    </div>
+
+    <div class="data-container" id="data" style="display:none;">
+        <h2>Form Submissions</h2>
+        <table id="submissionsTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <footer>
+        &copy; 2025 Heartland Concrete Pros &ndash; Built with pride in the heartland.
+    </footer>
+
+    <script>
+        // Theme toggle logic (copy from homepage for consistent dark mode)
+        const themeToggle = document.getElementById('theme-toggle');
+        function setTheme(mode) {
+            if (mode === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+        (function () {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark') setTheme('dark');
+            else setTheme('light');
+        })();
+        themeToggle.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            setTheme(isDark ? 'light' : 'dark');
+        });
+
+        // Admin login & table logic
+        function login() {
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value;
+            const error = document.getElementById("loginError");
+
+            if (username === "username" && password === "password") {
+                document.getElementById("login").style.display = "none";
+                document.getElementById("data").style.display = "block";
+                loadSubmissions();
+            } else {
+                error.textContent = "Invalid username or password.";
+            }
+        }
+
+        function logout() {
+            document.getElementById("login").style.display = "block";
+            document.getElementById("data").style.display = "none";
+            document.getElementById("username").value = '';
+            document.getElementById("password").value = '';
+            document.getElementById("loginError").textContent = '';
+        }
+
+        function loadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem("submissions")) || [];
+            const tbody = document.querySelector("#submissionsTable tbody");
+            tbody.innerHTML = "";
+            submissions.forEach(sub => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${sub.name}</td>
+                    <td>${sub.email}</td>
+                    <td>${sub.message}</td>
+                    <td>${sub.date}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+    
+        // Hamburger menu toggle for mobile
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+          hamburger.classList.toggle('open'); // Triggers the animated transition!
+          navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link =>
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburger.classList.remove('open');
+          })
+        );
+
+        
+        </script>
+</body>
+
+    
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Heartland Concrete Pros</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <span class="phone">📞 (555) 123-4567</span>
+    <a href="tel:5551234567"><button class="cta-header-btn">Free Estimate</button></a>
+  </div>
+
+  
+  <header>
+    <h2>Heartland Concrete Pros</h2>
+  </header>
+  <nav>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="submissions.html">Admin</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <div class="hamburger-bars">
+        <div class="hamburger-bar bar1"></div>
+        <div class="hamburger-bar bar2"></div>
+        <div class="hamburger-bar bar3"></div>
+      </div>
+    </button>
+
+  </nav>
+
+  <section class="section">
+    <div class="section-title">About Heartland Concrete Pros</div>
+    <div class="section-content">
+      <p>
+        <b>Heartland Concrete Pros</b> is a family-owned and operated business, proudly serving the Midwest for over 20 years. We’ve built our reputation on quality, reliability, and true Midwestern values. Whether you need a stunning stamped patio, a robust driveway, or a large commercial slab, our expert team has the experience and craftsmanship to deliver lasting results—every time.
+      </p>
+      <ul>
+        <li>Locally owned & operated</li>
+        <li>20+ years of concrete expertise</li>
+        <li>Fully licensed & insured</li>
+        <li>Focus on safety, quality, and honesty</li>
+        <li>Free estimates & fair, transparent pricing</li>
+      </ul>
+      <p>
+        From the first phone call to the final finish, we’re dedicated to exceeding your expectations. Thank you for considering us to build your next project.
+      </p>
+    </div>
+  </section>
+
+  <div class="carousel-container">
+    <div class="carousel-title">Our Recent Projects</div>
+    <div class="carousel" id="carousel">
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Project 1">
+      <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" alt="Project 2">
+      <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=800&q=80" alt="Project 3">
+      <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&q=80" alt="Project 4">
+    </div>
+    <div class="carousel-nav" id="carousel-nav"></div>
+  </div>
+  <!-- Footer Logos (place directly above <footer>) -->
+  <div class="footer-logos">
+    <span class="footer-logos-title">Our Partners & Clients</span>
+    <div class="logo-row">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Partner 1" class="partner-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_of_a_construction_helmet.png" alt="Partner 2" class="partner-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.png" alt="Partner 3" class="partner-logo">
+      <!-- Add or remove logos as needed -->
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Heartland Concrete Pros &ndash; Built with pride in the heartland.
+  </footer>
+
+  <script>
+    // All code runs after the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function () {
+      // THEME TOGGLE
+      const themeToggle = document.getElementById('theme-toggle');
+      function setTheme(mode) {
+        if (mode === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeToggle.textContent = '🌑';
+          themeToggle.classList.add('active');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          themeToggle.textContent = '🌕';
+          themeToggle.classList.remove('active');
+          localStorage.setItem('theme', 'light');
+        }
+      }
+      const saved = localStorage.getItem('theme');
+      setTheme(saved === 'dark' ? 'dark' : 'light');
+      themeToggle.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        setTheme(isDark ? 'light' : 'dark');
+      });
+
+      // Hamburger menu toggle for mobile
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('navLinks');
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open'); // Triggers the animated transition!
+        navLinks.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(link =>
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+        })
+      );
+
+
+      // CAROUSEL LOGIC (unchanged from before)
+      const carousel = document.getElementById('carousel');
+      const images = carousel.querySelectorAll('img');
+      const nav = document.getElementById('carousel-nav');
+      let current = 0, interval;
+
+      function showImage(idx) {
+        images.forEach((img, i) => {
+          img.style.opacity = (i === idx) ? "1" : "0";
+          img.style.position = (i === idx) ? "static" : "absolute";
+        });
+        Array.from(nav.children).forEach((dot, i) => {
+          dot.className = "carousel-dot" + (i === idx ? " active" : "");
+        });
+        current = idx;
+      }
+      function nextImage() {
+        showImage((current + 1) % images.length);
+      }
+      images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+        dot.onclick = () => {
+          showImage(i);
+          clearInterval(interval);
+          interval = setInterval(nextImage, 3500);
+        };
+        nav.appendChild(dot);
+      });
+      showImage(0);
+      interval = setInterval(nextImage, 3500);
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', () => interval = setInterval(nextImage, 3500));
+    });
+  </script>
+
+  <a href="contact.html" class="sticky-quote-btn" aria-label="Request a Quote">
+    <span>Request a Quote</span>
+    <span aria-hidden="true">💬</span>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to Top" class="back-to-top-btn" title="Back to Top">
+    ↑
+  </button>
+
+  <script>
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 220) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

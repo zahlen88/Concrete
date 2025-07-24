@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Contact Us – Heartland Concrete Pros</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Toast (center screen) -->
+  <div id="toast" class="toast"></div>
+
+  <div class="topbar">
+      <span class="phone">📞 (555) 123-4567</span>
+      <a href="tel:5551234567"><button class="cta-header-btn">Free Estimate</button></a>
+  </div>
+  
+  <header>
+    <h2>Heartland Concrete Pros</h2>
+  </header>
+  <nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <div class="hamburger-bars">
+        <div class="hamburger-bar bar1"></div>
+        <div class="hamburger-bar bar2"></div>
+        <div class="hamburger-bar bar3"></div>
+      </div>
+    </button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="submissions.html">Admin</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+  <section class="section contact-hero">
+    <div class="contact-content">
+      <h1 class="contact-heading">Contact Us</h1>
+      <p class="contact-subheading">We're ready to help—just reach out below.</p>
+      <form id="contactForm" class="contact-form">
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" required placeholder="Your Name" autocomplete="name" />
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" required placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" required placeholder="How can we help you?" autocomplete="off"></textarea>
+        </div>
+        <button type="submit" class="cta-btn contact-btn">Send Message</button>
+        <div id="form-status" class="form-status"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Heartland Concrete Pros &ndash; Built with pride in the heartland.
+  </footer>
+  <script>
+    // Theme toggle (modern moon/sun emoji)
+    const themeToggle = document.getElementById('theme-toggle');
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌑';
+        themeToggle.classList.add('active');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '🌕';
+        themeToggle.classList.remove('active');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    (function () {
+      const saved = localStorage.getItem('theme');
+      setTheme(saved === 'dark' ? 'dark' : 'light');
+    })();
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // Contact form logic with toast & confetti
+    document.getElementById('contactForm').onsubmit = function (e) {
+      e.preventDefault();
+      // Save to localStorage for admin page
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+      let submissions = JSON.parse(localStorage.getItem("submissions")) || [];
+      submissions.push({ name, email, message, date: new Date().toLocaleString() });
+      localStorage.setItem("submissions", JSON.stringify(submissions));
+      this.reset();
+
+      // Show toast
+      const toast = document.getElementById('toast');
+      toast.textContent = "✅ Message sent! We'll contact you soon.";
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2300);
+
+      // Confetti burst (canvas-confetti)
+      if (window.confetti) {
+        confetti({
+          particleCount: 240,
+          spread: 240,
+          origin: { y: 0.6 }
+        });
+      }
+    };
+    // Hamburger menu toggle for mobile
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open'); // Triggers the animated transition!
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link =>
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+      })
+    );
+
+
+  </script>
+
+  <!-- Confetti library (just before </body>) -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to Top" class="back-to-top-btn" title="Back to Top">
+    ↑
+  </button>
+  <script>
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 220) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>

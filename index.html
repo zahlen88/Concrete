@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Heartland Concrete Pros</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="topbar">
+    <span class="phone">📞 (555) 123-4567</span>
+    <a href="tel:5551234567"><button class="cta-header-btn">Free Estimate</button></a>
+  </div>
+  
+  <!-- HEADER with REVEAL -->
+  <header class="reveal">
+    <h2>Heartland Concrete Pros</h2>
+  </header>
+
+  <!-- NAVIGATION (with animated hamburger) -->
+  <nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <div class="hamburger-bars">
+        <div class="hamburger-bar bar1"></div>
+        <div class="hamburger-bar bar2"></div>
+        <div class="hamburger-bar bar3"></div>
+      </div>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="contact.html">Contact</a>
+      <a href="about.html">About</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="submissions.html">Admin</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+
+
+  <!-- HERO SECTION with REVEAL -->
+  <section class="hero reveal">
+    <div class="hero-content">
+      <h1>Building Foundations in the Heartland</h1>
+      <p>Quality Concrete for Home &amp; Business</p>
+      <a href="contact.html"><button class="cta-btn">Request a Quote</button></a>
+    </div>
+  </section>
+
+  <!-- CAROUSEL SECTION with REVEAL -->
+  <div class="carousel-container reveal">
+    <div class="carousel-title" style="text-align:center;">Featured Projects</div>
+    <div class="carousel" id="carousel">
+      <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Project 1">
+      <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=800&q=80" alt="Project 2">
+      <img src="https://images.unsplash.com/photo-1523413363574-c30aa1c2a516?auto=format&fit=crop&w=800&q=80" alt="Project 3">
+      <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&w=800&q=80" alt="Project 4">
+    </div>
+    <div class="carousel-nav" id="carousel-nav" style="text-align:center;"></div>
+  </div>
+
+  <!-- SERVICES SECTION with REVEAL -->
+  <section class="section reveal">
+    <div class="section-title">Our Services</div>
+    <div class="services-list">
+      <div class="service-card">
+        <h3>Residential Concrete</h3>
+        <p>Driveways, patios, walkways, and more—poured with precision and built to last.</p>
+      </div>
+      <div class="service-card">
+        <h3>Commercial Concrete</h3>
+        <p>From warehouses to retail, we handle large-scale slab pours and sitework for any business.</p>
+      </div>
+      <div class="service-card">
+        <h3>Stamped & Decorative</h3>
+        <p>Transform your space with custom stamped, stained, or colored concrete finishes.</p>
+      </div>
+      <div class="service-card">
+        <h3>Concrete Repair</h3>
+        <p>Resurfacing, patching, and crack repair to restore your concrete’s safety and beauty.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS PREVIEW SECTION with REVEAL -->
+  <section class="section testimonials-section reveal">
+    <div class="section-title">Testimonials Preview</div>
+    <div class="testimonials-list">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"The new driveway looks amazing! The crew was professional, timely, and the quality is second to none."</p>
+        <div class="testimonial-author">– Sarah M., Homeowner</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"We chose Heartland Concrete Pros for our warehouse floor and couldn’t be happier. Highly recommended."</p>
+        <div class="testimonial-author">– Tom R., Business Owner</div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"Outstanding work! The stamped patio is the highlight of our backyard. Great team and fair price."</p>
+        <div class="testimonial-author">– Lisa W., Homeowner</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US SECTION with REVEAL -->
+  <section class="section trust-section reveal">
+    <div class="section-title">Why Choose Us?</div>
+    <div class="section-content">
+      <ul>
+        <li>20+ Years of Concrete Expertise in the Midwest</li>
+        <li>Licensed, Insured, and Locally Trusted</li>
+        <li>Free, No-Obligation Estimates</li>
+        <li>Top-Quality Materials &amp; Workmanship</li>
+        <li>Satisfaction Guaranteed on Every Project</li>
+      </ul>
+    </div>
+  </section>
+  <!-- Footer Logos (place directly above <footer>) -->
+  <div class="footer-logos">
+    <span class="footer-logos-title">Our Partners & Clients</span>
+    <div class="logo-row">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Partner 1" class="partner-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Iconic_image_of_a_construction_helmet.png" alt="Partner 2" class="partner-logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Adobe_Corporate_logo.png" alt="Partner 3" class="partner-logo">
+      <!-- Add or remove logos as needed -->
+    </div>
+  </div>
+
+  <footer class="reveal">
+    &copy; 2025 Heartland Concrete Pros &ndash; Built with pride in the heartland.
+  </footer>
+
+
+
+  <!-- JS FOR REVEAL ANIMATIONS AND FUNCTIONALITY -->
+  <script>
+    // Reveal on scroll (Linear-style section animation)
+    document.addEventListener('DOMContentLoaded', function () {
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.13 }
+      );
+      reveals.forEach(el => observer.observe(el));
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    function setTheme(mode) {
+      if (mode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggle.textContent = '🌑';
+        themeToggle.classList.add('active');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '🌕';
+        themeToggle.classList.remove('active');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    (function () {
+      const saved = localStorage.getItem('theme');
+      setTheme(saved === 'dark' ? 'dark' : 'light');
+    })();
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // Hamburger menu toggle for mobile with animation
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    // Toggle .open on both hamburger and navLinks
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Optional: close nav when a link is clicked (mobile)
+    document.querySelectorAll('.nav-links a').forEach(link =>
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+      })
+    );
+
+
+    // Carousel logic (optional, keep if using a carousel)
+    const carousel = document.getElementById('carousel');
+    if (carousel) {
+      const images = carousel.querySelectorAll('img');
+      const nav = document.getElementById('carousel-nav');
+      let current = 0, interval;
+      function showImage(idx) {
+        images.forEach((img, i) => {
+          img.style.opacity = (i === idx) ? "1" : "0";
+          img.style.position = (i === idx) ? "static" : "absolute";
+        });
+        Array.from(nav.children).forEach((dot, i) => {
+          dot.className = "carousel-dot" + (i === idx ? " active" : "");
+        });
+        current = idx;
+      }
+      function nextImage() {
+        showImage((current + 1) % images.length);
+      }
+      images.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+        dot.onclick = () => {
+          showImage(i);
+          clearInterval(interval);
+          interval = setInterval(nextImage, 3500);
+        };
+        nav.appendChild(dot);
+      });
+      showImage(0);
+      interval = setInterval(nextImage, 3500);
+      carousel.addEventListener('mouseenter', () => clearInterval(interval));
+      carousel.addEventListener('mouseleave', () => interval = setInterval(nextImage, 3500));
+    }
+
+
+
+    
+  </script>
+  <a href="contact.html" class="sticky-quote-btn" aria-label="Request a Quote">
+    <span>Request a Quote</span>
+    <span aria-hidden="true">💬</span>
+  </a>
+  <!-- Back to Top Button -->
+  <button id="backToTop" aria-label="Back to Top" class="back-to-top-btn" title="Back to Top">
+    ↑
+  </button>
+
+  
+  <script>
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 220) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+
+</body>
+</html>
