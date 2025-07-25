@@ -265,7 +265,7 @@ nav a.active {
   padding: 2.2rem 2rem;
 }
 
-..testimonials-list {
+.testimonials-list {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping like services list */
     gap: 2.1rem; /* Add spacing between testimonial cards */
@@ -283,6 +283,7 @@ nav a.active {
     display: flex;
     flex-direction: column;
     transition: box-shadow 0.16s, border 0.16s, transform 0.14s;
+}
 }
 .service-card:hover,
 .testimonial-card:hover {
